@@ -1,0 +1,45 @@
+<div class="row">
+
+  <my-alert *ngIf="message.text" [message]="message"></my-alert>
+
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+      <div class="well">
+        <h2>Registration </h2>
+    <hr>
+    <form #registrationForm="ngForm" (ngSubmit)="register(confirme);registrationForm.reset();">
+      <div class="form-group" [ngClass]="{'has-error':name.invalid && name.touched}">
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control" [(ngModel)]="user.name" #name="ngModel" required>
+          <p *ngIf="name.invalid && name.touched" class="help-block">This field is required</p>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':firstname.invalid && firstname.touched}">
+          <label for="firstname">Firstname</label>
+          <input type="text" name="firstname" class="form-control" [(ngModel)]="user.firstname" #firstname="ngModel" required>
+          <p *ngIf="firstname.invalid && firstname.touched" class="help-block">This field is required</p>
+          
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':email.invalid && email.touched}">
+          <label for="email">Email</label>
+          <input type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel"required>
+          <p *ngIf="email.invalid && email.touched" class="help-block">This field is required</p>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':password.invalid && password.touched}">
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" required>
+          <p *ngIf="password.invalid && password.touched" class="help-block">This field is required</p>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':confirm.invalid && confirm.touched}">
+          <label for="confirme">Confirme</label>
+          <input type="password" name="confirme" class="form-control" [(ngModel)]="confirme"  #confirm="ngModel" required>
+          <p *ngIf="password.invalid && password.touched" class="help-block">This field is required</p>
+      </div>
+      <button type="submit" class="btn btn-default" [disabled]="!registrationForm.valid">Submit</button>
+      
+    </form>
+      </div>
+    
+    
+  </div>
+  <div class="col-md-3"></div>
+</div>
